@@ -3,9 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Homepage</title>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
-    </head>
+    <title>Yura Homepage</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    
+    <style>
+        /* カスタムレイアウト設定 */
+        header {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* メインエリアの上側を詰める */
+        main {
+            padding-top: 10px !important;
+        }
+
+        /* 区切り線(hr)の上下の隙間を減らす */
+        hr {
+            margin: 20px 0;
+        }
+        
+        /* ナビゲーションを右寄せにする調整 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* メインエリアのレイアウト（PC用） */
+        @media (min-width: 800px) {
+            .layout-container {
+                display: flex;
+                align-items: flex-start; /* 上揃え */
+                gap: 40px; /* 横の間隔 */
+            }
+            /* 左サイドバーの幅固定 */
+            aside {
+                width: 250px;
+                flex-shrink: 0;
+                border-right: 1px solid #eee; /* 区切り線 */
+                padding-right: 20px;
+            }
+            /* 右メインコンテンツは残りの幅全部 */
+            .main-content {
+                flex-grow: 1;
+            }            
+        }
+
+        /* 記事エリアの「横並び機能」を無効化 */
+        .main-content section {
+            display: block !important;
+        }
+        
+        /* 記事の幅を最大にして、下に隙間を作る */
+        .main-content article {
+            width: 100% !important;
+            margin: 0 0 30px 0 !important; /* 下に30pxの余白 */
+            border-bottom: 1px dashed #ddd; /* 記事ごとに点線で区切る（お好みで） */
+            padding-bottom: 20px;
+        }
+        /* 最後の記事だけ区切り線を消す */
+        .main-content article:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
 <body>
     <header>
         <nav>
@@ -14,6 +81,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Games</a></li>
                 <li><a href="#">Techs</a></li>
+                <li><a href="#">Notes</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
@@ -21,41 +89,41 @@
 
     <main>
         <hr>
-        <section>
-            <header>
-                <h2>Blog & Notes</h2>
-                <p>日々の開発ログ</p>
-            </header>
+        <div class="layout-container">
             
-            <article>
-                <h3><a href="posts/001_hello.html">ブログを開設しました</a></h3>
-                <p>サイトの立ち上げ手順と、今後の予定について。</p>
-                <small>2026/01/20</small>
-            </article>
-        </section>
-
-        <section>
-            <header>
-                <h2>Welcome</h2>
-                <p>ようこそ。</p>
-            </header>
             <aside>
-                <img src="yura_icon.png" alt="プロフィール画像" style="width: 150px; border-radius: 50%;">
-
-                <h3>About Me</h3>
-                <p>Games/Art/Embedded Systems/C/C++/C#/Matlab/Python</p>
+                <div style="text-align: center;">
+                    <img src="yura_icon.png" alt="Icon" style="width: 120px; border-radius: 50%;">
+                    <h3>Yura</h3>
+                </div>
+                
+                <h4>About me</h4>
                 <p>ゲーム開発の技術ブログや進捗を載せていきます。</p>
 
-                <h3>Links</h3>
+                <h4>Links</h4>
                 <ul>
                     <li><a href="https://x.com/YuraWorksX" target="_blank">X (Twitter)</a></li>
                     <li><a href="https://github.com/Yura0326" target="_blank">GitHub</a></li>
                     <li><a href="https://qiita.com/Yura0326" target="_blank">Qiita</a></li>
                     <li><a href="https://www.youtube.com/@YuraWorksCh" target="_blank">YouTube</a></li>                    
                 </ul>
-                
             </aside>
-        </section>
+
+            <div class="main-content">
+                <section>
+                    <header>
+                        <h2>Update</h2>
+                    </header>
+                    <article>
+                        <h3><a href="posts/001_hello.html">ブログを開設しました</a></h3>
+                        <p>Games / Techs / Notes の更新内容をここに。</p>
+                        <small>2026/01/20 - Notes</small>
+                    </article>
+                    
+                </section>
+            </div>
+
+        </div>
     </main>
 </body>
 </html>
